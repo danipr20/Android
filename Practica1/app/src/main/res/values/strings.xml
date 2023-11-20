@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Practica1</string>
+    <string name="boton">"Sumar +1"</string>
+    <string name="pulsador">Restar -1</string>
+    <string name="vavava">appapapapa</string>
+
 
 </resources>

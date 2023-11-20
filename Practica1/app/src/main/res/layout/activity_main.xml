@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
@@ -16,14 +17,64 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/hello_world"
+        android:id="@+id/boton"
+        android:layout_width="116dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="535dp"
+        android:text="@string/boton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_cont"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TextSizeCheck,VisualLintOverlap" />
+
+    <Button
+        android:id="@+id/pulsador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="button"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="277dp"
-        tools:text="hello world +1"
-        tools:visibility="visible" />
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="142dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/pulsador"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/vavava"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.074"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/text_cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="184dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/boton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
