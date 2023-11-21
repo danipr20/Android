@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import javax.xml.transform.Result;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -18,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private int contador=0;
     private String valorA="";
     private String valorB="";
-    private String res="";
+    private double res=0;
+
+    private char operacion='0';
 
     private Button boton1; Button boton2;Button boton3;Button boton4;Button boton5;Button boton6;Button boton7;Button boton8;Button boton9;Button boton0;
     private Button botonAC;Button botonC;Button botonSuma;Button botonResta;Button botonMulti;Button botonDivi;Button botonIgual;Button botonComa;
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         boton8 = (Button) findViewById(R.id.boton8);
         boton9 = (Button) findViewById(R.id.boton9);
         boton0 = (Button) findViewById(R.id.boton0);
+        botonComa = (Button) findViewById(R.id.boton11);
         botonSuma = (Button) findViewById(R.id.suma);
         botonResta = (Button) findViewById(R.id.resta);
         botonDivi = (Button) findViewById(R.id.division);
@@ -75,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               valorA=valorA.concat("1");
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
+                valorA=valorA.concat("1");
                 Resultado.setText(valorA);
             }
         });
@@ -83,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
         boton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("2");
                 Resultado.setText(valorA);
             }
@@ -91,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
         boton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("3");
                 Resultado.setText(valorA);
             }
@@ -99,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
         boton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("4");
                 Resultado.setText(valorA);
             }
@@ -107,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
         boton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("5");
                 Resultado.setText(valorA);
             }
@@ -115,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
         boton6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("6");
                 Resultado.setText(valorA);
             }
@@ -123,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
         boton7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("7");
                 Resultado.setText(valorA);
             }
@@ -131,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
         boton8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
+
                 valorA=valorA.concat("8");
                 Resultado.setText(valorA);
             }
@@ -139,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
         boton9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("9");
                 Resultado.setText(valorA);
             }
@@ -147,7 +171,19 @@ public class MainActivity extends AppCompatActivity {
         boton0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";operacion='0';}
+
                 valorA=valorA.concat("0");
+                Resultado.setText(valorA);
+            }
+        });
+
+        botonComa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (operacion=='='){valorA="";valorB="";}
+
+                valorA=valorA.concat(".");
                 Resultado.setText(valorA);
             }
         });
@@ -155,6 +191,10 @@ public class MainActivity extends AppCompatActivity {
         botonSuma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                operacion='+';
+                valorB=valorA;
+                valorA="";
+                Resultado.setText(valorB+" + ");
 
             }
         });
@@ -162,23 +202,94 @@ public class MainActivity extends AppCompatActivity {
         botonResta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operacion='-';
+                valorB=valorA;
+                valorA="";
+                Resultado.setText(valorB+" - ");
             }
         });
 
         botonMulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operacion='*';
+                valorB=valorA;
+                valorA="";
+                Resultado.setText(valorB+" X ");
             }
         });
 
         botonDivi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                operacion='/';
+                valorB=valorA;
+                valorA="";
+                Resultado.setText(valorB+" : ");
+            }
+        });
+
+        botonAC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                valorA="0";
+                valorB="0";
+                Resultado.setText(valorA);
+            }
+        });
+
+        botonC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                valorA=valorA.concat("1");
+                Resultado.setText(valorA);
+            }
+        });
+
+        botonIgual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (operacion){
+                    case '+':
+                        res=Float.parseFloat(valorA)+Float.parseFloat(valorB);
+                        valorA= String.valueOf(res);
+                        valorB="0";
+                    Resultado.setText("RESULTADO= "+valorA);
+                operacion='=';
+                break;
+                    case '-':
+                        res=Float.parseFloat(valorB)-Float.parseFloat(valorA);
+                        valorA= String.valueOf(res);
+                        valorB="0";
+                        Resultado.setText("RESULTADO= "+valorA);
+                        operacion='=';
+                break;
+
+                    case '*':
+                        res=Float.parseFloat(valorA)*Float.parseFloat(valorB);
+                        valorA= String.valueOf(res);
+                        valorB="0";
+                        Resultado.setText("RESULTADO= "+valorA);
+                        operacion='=';
+                break;
+
+                    case '/':
+                        res=Float.parseFloat(valorB)/Float.parseFloat(valorA);
+                        valorA= String.valueOf(res);
+                        valorB="0";
+                        Resultado.setText("RESULTADO= "+valorA);
+                        operacion='=';
+                break;
+
+                    default:
+
+                        Resultado.setText("RESULTADO= "+valorA);
+                        break;
+                }
 
             }
         });
+
 
 
 
