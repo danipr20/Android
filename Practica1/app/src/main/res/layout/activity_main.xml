@@ -67,7 +67,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="16dp"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,14 +120,27 @@
 
     <TextView
         android:id="@+id/result"
-        android:layout_width="380dp"
-        android:layout_height="127dp"
+        android:layout_width="337dp"
+        android:layout_height="41dp"
         android:layout_marginTop="16dp"
         android:text="@string/textview"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoNombre"
+        android:layout_width="153dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="32dp"
+        android:text="Daniel Prieto Romero"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/boton2"
