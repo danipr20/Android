@@ -16,7 +16,7 @@
     <string name="suma">+</string>
     <string name="ac">AC</string>
     <string name="c">C</string>
-    <string name="porcentaje">%</string>
+    <string name="autor">Autor</string>
     <string name="cient">Cient</string>
     <string name="coma">,</string>
     <string name="igual">=</string>
@@ -24,5 +24,9 @@
     <string name="menos">-</string>
     <string name="division">:</string>
 
+//Cientifica
 
+    <string name="sen">"sen(X)"</string>
+    <string name="cos">"cos(x)"</string>
+    <string name="tan">"tan(x)"</string>
 </resources>

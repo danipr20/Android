@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteX="18dp"
-    tools:layout_editor_absoluteY="571dp">
+    tools:context=".Calculadora_Cientifica">
 
     <Button
         android:id="@+id/division"
@@ -62,6 +60,34 @@
         app:layout_constraintBottom_toTopOf="@+id/boton5"
         app:layout_constraintEnd_toStartOf="@+id/boton9"
         app:layout_constraintStart_toEndOf="@+id/boton7" />
+
+    <Button
+        android:id="@+id/sen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sen"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TextSizeCheck,VisualLintOverlap"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="543dp" />
+
+    <Button
+        android:id="@+id/cos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cos"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TextSizeCheck,VisualLintOverlap"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="543dp" />
+
+    <Button
+        android:id="@+id/tan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="140dp"
+        android:text="@string/tan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="210dp" />
 
     <Button
         android:id="@+id/boton1"
@@ -267,4 +293,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="395dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="-8dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="543dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

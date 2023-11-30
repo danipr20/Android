@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class Calculadora_Cientifica extends AppCompatActivity {
 
+
+    Intent modo2 = getIntent();
 
     private Button puls1;
     private Button puls2;
@@ -44,17 +46,22 @@ public class MainActivity extends AppCompatActivity {
     private Button botonIgual;
     private Button botonComa;
     private Button autor; //autor
-    private Button cient;
+    private Button botonCos;
+    private Button botonSen;
+    private Button botonTan;
+
+    //  modo2("Numero_Pantalla",0);
 
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_calculadora_cientifica);
 
 
-        //Calculadora
 
+
+        //Calculadora basica
         boton1 = (Button) findViewById(R.id.boton1);
         boton2 = (Button) findViewById(R.id.boton2);
         boton3 = (Button) findViewById(R.id.boton3);
@@ -75,7 +82,12 @@ public class MainActivity extends AppCompatActivity {
         botonC = (Button) findViewById(R.id.boton12);
         Resultado = (TextView) findViewById(R.id.result);
         autor = (Button) findViewById(R.id.boton14);
-        cient = (Button) findViewById(R.id.boton17);
+
+        // Calculadora cientifica
+
+        botonSen = (Button) findViewById(R.id.sen);
+        botonCos = (Button) findViewById(R.id.cos);
+        botonTan = (Button) findViewById(R.id.tan);
 
 
 
@@ -88,6 +100,23 @@ public class MainActivity extends AppCompatActivity {
                 valorA="";
             }
 
+
+        });
+        puls1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contador++;
+                texto.setText("CONTADOR= " + contador);
+            }
+
+
+        });
+        puls2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contador--;
+                texto.setText("CONTADOR= " + contador);
+            }
 
 
         });
@@ -278,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
                 if (valorA.equals("")) {
                     valorA = "0";
                 }
-                  else if (operacion == '0') {
+                else if (operacion == '0') {
                     res = Double.parseDouble(valorA) - Double.parseDouble(valorB);
                 } else if (operacion == '=') {
                     valorB = String.valueOf(res);
@@ -356,23 +385,49 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (valorA.length()>0){
-                valorA = valorA.substring(0, valorA.length() - 1);
-                Resultado.setText(valorA);}
+                    valorA = valorA.substring(0, valorA.length() - 1);
+                    Resultado.setText(valorA);}
             }
         });
 
-        //Cambia al modo cientifica
-        cient.setOnClickListener(new View.OnClickListener() {
+        //Botones calculadora cientifica
+        /////////////////////////////////
+        botonSen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                res =  Math.sin(Double.parseDouble(valorB));
+                Resultado.setText("Sen("+valorB+") = "+res);
+                valorA = "";
+                valorB = "";
 
-                Intent cambio = new Intent (MainActivity.this, Calculadora_Cientifica.class);
-                cambio.putExtra("Numero_Pantalla",res);
-                startActivity(cambio);
-
-
+                operacion = 's';
             }
         });
+
+
+        botonCos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (valorA.length()>0){
+                    valorA = valorA.substring(0, valorA.length() - 1);
+                    Resultado.setText(valorA);}
+            }
+        });
+
+
+        botonTan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (valorA.length()>0){
+                    valorA = valorA.substring(0, valorA.length() - 1);
+                    Resultado.setText(valorA);}
+            }
+        });
+
+
+
+
+        //////////////////////////////////
 
 
 
@@ -408,6 +463,16 @@ public class MainActivity extends AppCompatActivity {
                         valorB = String.valueOf(res);
                         operacion = '=';
                         break;
+
+
+                    case 's':
+                        res =  Math.sin(Double.parseDouble(valorA));
+                        Resultado.setText("Sen("+valorA+") = "+res);
+                        valorA = "";
+                        valorB = "";
+                        operacion = '=';
+                        break;
+
 
                     default:
                         res = Double.parseDouble(valorA);
