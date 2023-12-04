@@ -11,10 +11,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button puls1;
-    private Button puls2;
 
-    private TextView texto;
+
     private TextView Resultado;
     private int contador = 0;
     private String valorA = "";
@@ -44,13 +42,24 @@ public class MainActivity extends AppCompatActivity {
     private Button botonIgual;
     private Button botonComa;
     private Button autor; //autor
-    private Button cient;
+    private Button cambio;
 
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        Intent intent = getIntent();
+        contador= intent.getIntExtra("contador", 0);
+
+        if (contador>0){
+
+            valorA = intent.getStringExtra("valorA");
+            valorB = intent.getStringExtra("valorB");
+            res = intent.getDoubleExtra("res", 0.0);}
+        contador++;
 
 
         //Calculadora
@@ -75,9 +84,11 @@ public class MainActivity extends AppCompatActivity {
         botonC = (Button) findViewById(R.id.boton12);
         Resultado = (TextView) findViewById(R.id.result);
         autor = (Button) findViewById(R.id.boton14);
-        cient = (Button) findViewById(R.id.boton17);
+        cambio = (Button) findViewById(R.id.boton17);
 
 
+
+        Resultado.setText(valorA);
 
 
         autor.setOnClickListener(new View.OnClickListener() {
@@ -256,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (operacion == '0') {
                     res = Double.parseDouble(valorA) + Double.parseDouble(valorB);
-                } else if (operacion == '=') {
+                } else if (operacion == '=' ) {
                     valorB = String.valueOf(res);
                     Resultado.setText(valorB + " + ");
                 } else {
@@ -361,26 +372,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Cambia al modo cientifica
-        cient.setOnClickListener(new View.OnClickListener() {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        //Cambia de activity, al modo cientifica
+        cambio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent cambio = new Intent (MainActivity.this, Calculadora_Cientifica.class);
-                cambio.putExtra("Numero_Pantalla",res);
-                startActivity(cambio);
-
+                Intent intent = new Intent (MainActivity.this, Calculadora_Cientifica.class);
+                if (res!=0){intent.putExtra("valorA", String.valueOf(res));}
+                else {
+                intent.putExtra("valorA", valorA);}
+                valorB="";
+                res=0;
+                intent.putExtra("valorB", valorB);
+                intent.putExtra("res", res);
+                startActivity(intent);
 
             }
         });
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         botonIgual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                if (valorB.equals("")) {
+                    valorB = "0";
+                }
                 switch (operacion) {
                     case '+':
                         res = Double.parseDouble(valorB) + Float.parseFloat(valorA);

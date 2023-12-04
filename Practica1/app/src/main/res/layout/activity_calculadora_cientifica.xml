@@ -65,29 +65,40 @@
         android:id="@+id/sen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="139dp"
         android:text="@string/sen"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TextSizeCheck,VisualLintOverlap"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="543dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton17"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TextSizeCheck,VisualLintOverlap" />
 
     <Button
         android:id="@+id/cos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="9dp"
         android:text="@string/cos"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TextSizeCheck,VisualLintOverlap"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="543dp" />
+        app:layout_constraintEnd_toStartOf="@+id/tan"
+        app:layout_constraintStart_toEndOf="@+id/sen"
+        app:layout_constraintTop_toBottomOf="@+id/boton0"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck,TextSizeCheck,VisualLintOverlap" />
 
     <Button
         android:id="@+id/tan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="12dp"
         android:layout_marginBottom="140dp"
         android:text="@string/tan"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="210dp" />
+        app:layout_constraintStart_toEndOf="@+id/cos"
+        app:layout_constraintTop_toBottomOf="@+id/boton11"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/boton1"
@@ -217,12 +228,14 @@
 
     <Button
         android:id="@+id/boton17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="92dp"
+        android:layout_height="49dp"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="200dp"
         android:text="@string/cient"
+        android:textSize="12sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/boton0"
         app:layout_constraintStart_toStartOf="parent" />
