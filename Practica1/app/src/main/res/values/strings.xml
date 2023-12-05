@@ -1,5 +1,5 @@
 <resources>
-        <string name="app_name">Calculadora Dani</string>
+        <string name="app_name">Calcu Dani</string>
     <string name="textview">0</string>
     <string name="_1">1</string>
     <string name="_0">0</string>
@@ -27,4 +27,6 @@
     <string name="sen">"sen(X)"</string>
     <string name="cos">"cos(x)"</string>
     <string name="tan">"tan(x)"</string>
+    <string name="xy">"X^Y"</string>
+
 </resources>

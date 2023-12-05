@@ -2,6 +2,7 @@ package infoii.dpr20.practica1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -47,9 +48,11 @@ public class Calculadora_Cientifica extends AppCompatActivity {
     private Button botonSen;
     private Button botonTan;
     private Button cambio;
+    private Button botonxy;
 
 
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -92,6 +95,8 @@ public class Calculadora_Cientifica extends AppCompatActivity {
         botonSen = (Button) findViewById(R.id.sen);
         botonCos = (Button) findViewById(R.id.cos);
         botonTan = (Button) findViewById(R.id.tan);
+        botonxy = (Button) findViewById(R.id.xy);
+
 
 
 
@@ -419,6 +424,17 @@ public class Calculadora_Cientifica extends AppCompatActivity {
             }
         });
 
+        botonxy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resultado.setText(valorA+"^");
+
+                valorB = valorA;
+                valorA = "";
+
+                operacion = '^';
+            }
+        });
 
 
         cambio.setOnClickListener(new View.OnClickListener() {
@@ -501,6 +517,14 @@ public class Calculadora_Cientifica extends AppCompatActivity {
                         valorA = "";
                         valorB = "";
                         operacion = '=';
+                        break;
+
+                    case '^':
+                        res = Math.pow(Double.parseDouble(valorB), Double.parseDouble(valorA));
+                        Resultado.setText(valorB + "^" + valorA + " = " + res);
+                        valorB = String.valueOf(res);
+                        operacion = '=';
+
                         break;
 
                     default:
