@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
     private Button autor; //autor
     private Button cambio;
 
+
+    private void showToast(String mensaje) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -89,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         Resultado.setText(valorA);
+
+
+
 
 
         autor.setOnClickListener(new View.OnClickListener() {
@@ -402,6 +410,12 @@ public class MainActivity extends AppCompatActivity {
                 if (valorB.equals("")) {
                     valorB = "0";
                 }
+                if (valorA.equals("")) {
+                    valorA = "0";
+                }
+                try {
+
+
                 switch (operacion) {
                     case '+':
                         res = Double.parseDouble(valorB) + Float.parseFloat(valorA);
@@ -436,7 +450,13 @@ public class MainActivity extends AppCompatActivity {
                         valorA = "";
                         break;
                 }
-
+                }catch (NumberFormatException e) {
+                    // Manejo de error: Los valores ingresados no son numéricos
+                    showToast("Ingrese valores numéricos válidos");
+                } catch (Exception e) {
+                    // Manejo de otros errores
+                    showToast("Error al realizar la operación");
+                }
             }
         });
 

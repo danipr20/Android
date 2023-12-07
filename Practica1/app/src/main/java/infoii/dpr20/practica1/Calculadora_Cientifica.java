@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Calculadora_Cientifica extends AppCompatActivity {
 
@@ -50,7 +51,9 @@ public class Calculadora_Cientifica extends AppCompatActivity {
     private Button cambio;
     private Button botonxy;
 
-
+    private void showToast(String mensaje) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
 
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
@@ -464,74 +467,88 @@ public class Calculadora_Cientifica extends AppCompatActivity {
         botonIgual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (valorB.equals("")) {
+                    valorB = "0";
+                }
+                if (valorA.equals("")) {
+                    valorA = "0";
+                }
+                try {
 
 
-                switch (operacion) {
-                    case '+':
-                        res = Double.parseDouble(valorB) + Float.parseFloat(valorA);
-                        Resultado.setText(valorB + " + " + valorA + " = " + res);
-                        valorB = String.valueOf(res);
-                        operacion = '=';
-                        break;
-                    case '-':
-                        res = Double.parseDouble(valorB) - Float.parseFloat(valorA);
-                        Resultado.setText(valorB + " - " + valorA + " = " + res);
-                        valorB = String.valueOf(res);
-                        operacion = '=';
-                        break;
+                    switch (operacion) {
+                        case '+':
+                            res = Double.parseDouble(valorB) + Float.parseFloat(valorA);
+                            Resultado.setText(valorB + " + " + valorA + " = " + res);
+                            valorB = String.valueOf(res);
+                            operacion = '=';
+                            break;
+                        case '-':
+                            res = Double.parseDouble(valorB) - Float.parseFloat(valorA);
+                            Resultado.setText(valorB + " - " + valorA + " = " + res);
+                            valorB = String.valueOf(res);
+                            operacion = '=';
+                            break;
 
-                    case '*':
-                        res = Double.parseDouble(valorB) * Float.parseFloat(valorA);
-                        Resultado.setText(valorB + " X " + valorA + " = " + res);
-                        valorB = String.valueOf(res);
-                        operacion = '=';
-                        break;
+                        case '*':
+                            res = Double.parseDouble(valorB) * Float.parseFloat(valorA);
+                            Resultado.setText(valorB + " X " + valorA + " = " + res);
+                            valorB = String.valueOf(res);
+                            operacion = '=';
+                            break;
 
-                    case '/':
-                        res = Double.parseDouble(valorB) / Float.parseFloat(valorA);
-                        Resultado.setText(valorB + " / " + valorA + " = " + res);
-                        valorB = String.valueOf(res);
-                        operacion = '=';
-                        break;
+                        case '/':
+                            res = Double.parseDouble(valorB) / Float.parseFloat(valorA);
+                            Resultado.setText(valorB + " / " + valorA + " = " + res);
+                            valorB = String.valueOf(res);
+                            operacion = '=';
+                            break;
 
 
-                    case 's':
-                        res =  Math.sin(Math.toRadians(Double.parseDouble(valorA)));
-                        Resultado.setText("Sen("+valorA+"º) = "+res);
-                        valorA = "";
-                        valorB = "";
-                        operacion = '=';
-                        break;
+                        case 's':
+                            res = Math.sin(Math.toRadians(Double.parseDouble(valorA)));
+                            Resultado.setText("Sen(" + valorA + "º) = " + res);
+                            valorA = "";
+                            valorB = "";
+                            operacion = '=';
+                            break;
 
-                    case 'c':
-                        res =  Math.cos(Math.toRadians(Double.parseDouble(valorA)));
-                        Resultado.setText("Cos("+valorA+"º) = "+res);
-                        valorA = "";
-                        valorB = "";
-                        operacion = '=';
-                        break;
+                        case 'c':
+                            res = Math.cos(Math.toRadians(Double.parseDouble(valorA)));
+                            Resultado.setText("Cos(" + valorA + "º) = " + res);
+                            valorA = "";
+                            valorB = "";
+                            operacion = '=';
+                            break;
 
                         case 't':
-                        res =  Math.tan(Math.toRadians(Double.parseDouble(valorA)));
-                        Resultado.setText("Tan("+valorA+"º) = "+res);
-                        valorA = "";
-                        valorB = "";
-                        operacion = '=';
-                        break;
+                            res = Math.tan(Math.toRadians(Double.parseDouble(valorA)));
+                            Resultado.setText("Tan(" + valorA + "º) = " + res);
+                            valorA = "";
+                            valorB = "";
+                            operacion = '=';
+                            break;
 
-                    case '^':
-                        res = Math.pow(Double.parseDouble(valorB), Double.parseDouble(valorA));
-                        Resultado.setText(valorB + "^" + valorA + " = " + res);
-                        valorB = String.valueOf(res);
-                        operacion = '=';
+                        case '^':
+                            res = Math.pow(Double.parseDouble(valorB), Double.parseDouble(valorA));
+                            Resultado.setText(valorB + "^" + valorA + " = " + res);
+                            valorB = String.valueOf(res);
+                            operacion = '=';
 
-                        break;
+                            break;
 
-                    default:
-                        res = Double.parseDouble(valorA);
-                        Resultado.setText("RESULTADO= " + res);
-                        valorA = "";
-                        break;
+                        default:
+                            res = Double.parseDouble(valorA);
+                            Resultado.setText("RESULTADO= " + res);
+                            valorA = "";
+                            break;
+                    }
+                }catch (NumberFormatException e) {
+                    // Manejo de error: Los valores ingresados no son numéricos
+                    showToast("Ingrese valores numéricos válidos");
+                } catch (Exception e) {
+                    // Manejo de otros errores
+                    showToast("Error al realizar la operación");
                 }
 
             }
