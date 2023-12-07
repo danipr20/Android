@@ -2,6 +2,7 @@ package infoii.dpr20.tasklist;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
+
 
 public class MainActivity extends AppCompatActivity {
     private Map<String, List<String>> taskLists; // Mapa para almacenar las listas y sus tareas
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newListName = newListEditText.getText().toString();
+
                 if (!newListName.isEmpty()) {
                     addNewList(newListName);
                     updateListsSpinner();
@@ -60,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         // Botón para agregar tarea a la lista seleccionada
         Button addTaskButton = findViewById(R.id.addTaskButton);
         addTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String newTask = newTaskEditText.getText().toString();
                 String selectedListName = listsSpinner.getSelectedItem().toString();
+
+
+
                 if (!newTask.isEmpty()) {
                     addNewTask(selectedListName, newTask);
                     updateTasksList(selectedListName);
@@ -77,6 +88,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+/*
+    //////////////////
+    //Comprobar si ha actualziado el spiner;
+    listsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            String selectedListName = parentView.getItemAtPosition(position).toString();
+            updateTasksList(selectedListName);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parentView) {
+            // Este método se llama cuando no hay ningún elemento seleccionado.
+            // Puedes dejarlo vacío o realizar alguna acción específica.
+        }
+    });
+        /////////////////////////////////
+*/
+
 
     // Agregar una nueva lista
     private void addNewList(String newListName) {
