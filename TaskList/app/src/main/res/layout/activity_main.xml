@@ -16,11 +16,25 @@
             android:layout_height="wrap_content"
             android:hint="Nueva Lista" />
 
+    <LinearLayout
+        android:id="@+id/buttons1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
         <Button
             android:id="@+id/addListButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agregar Lista" />
+
+        <Button
+            android:id="@+id/remListButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar lista" />
+    </LinearLayout>
+
     </LinearLayout>
 
     <!-- Sección para mostrar listas y tareas -->
@@ -44,11 +58,24 @@
             android:layout_height="wrap_content"
             android:hint="Nueva Tarea" />
 
+
+    <LinearLayout
+        android:id="@+id/buttons2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
         <Button
             android:id="@+id/addTaskButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agregar Tarea" />
+
+
+
+    </LinearLayout>
+
 
         <ListView
             android:id="@+id/tasksListView"

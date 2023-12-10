@@ -66,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+////////////
+// Botón para eliminar lista seleccionada
+        Button remListButton = findViewById(R.id.remListButton);
+        remListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String selectedListName = listsSpinner.getSelectedItem().toString();
+                removeList(selectedListName);
+                updateListsSpinner();
+            }
+        });
+///////////////////
+
 
 
         // Botón para agregar tarea a la lista seleccionada
@@ -89,7 +102,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
 /*
+// Actualmente no funciona, tenemos que encontrar un evento que nos permita actualizar, pero ese no existe
     //////////////////
     //Comprobar si ha actualziado el spiner;
     listsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -116,11 +132,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Eliminar lista
+    private void removeList(String listName) {
+        if (taskLists.containsKey(listName)) {
+            taskLists.remove(listName);
+        }
+    }
+
+
     // Agregar una nueva tarea a una lista existente
     private void addNewTask(String listName, String newTask) {
         List<String> tasks = taskLists.get(listName);
         if (tasks != null) {
             tasks.add(newTask);
+            taskLists.put(listName, tasks);
+        }
+    }
+
+    // Eliminar una tarea de una lista
+    private void removeTask(String listName, int position) {
+        List<String> tasks = taskLists.get(listName);
+        if (tasks != null && position >= 0 && position < tasks.size()) {
+            tasks.remove(position);
             taskLists.put(listName, tasks);
         }
     }
